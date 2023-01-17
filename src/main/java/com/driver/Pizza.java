@@ -25,25 +25,35 @@ public class Pizza {
 
     public void addExtraCheese(){
         // your code goes here
-        if(!isExtraCheeseAdded)
+        if(!isExtraCheeseAdded){
             isExtraCheeseAdded = true;
+            price += 80;
+        }
+
     }
 
     public void addExtraToppings(){
         // your code goes here
-        if(!isExtraToppingsAdded)
+        if(!isExtraToppingsAdded) {
             isExtraToppingsAdded = true;
+            if (isVeg)
+                price += 70;
+            else
+                price += 120;
+        }
     }
 
     public void addTakeaway(){
         // your code goes here
-        if(!isTakeawayAdded)
+        if(!isTakeawayAdded){
             isTakeawayAdded = true;
+            price += 20;
+        }
     }
 
     public String getBill(){
         // your code goes here
-        int toppings,total=price;
+        int toppings;
         if(isVeg)
             toppings = 70;
         else
@@ -51,19 +61,14 @@ public class Pizza {
 
         StringBuilder str = new StringBuilder("");
         str.append("Base Price Of The Pizza: "+price+'\n');
-        if(isExtraCheeseAdded) {
+        if(isExtraCheeseAdded)
             str.append("Extra Cheese Added: "+80+'\n');
-            total += 80;
-        }
-        if(isExtraToppingsAdded) {
+        if(isExtraToppingsAdded)
             str.append("Extra Toppings Added: "+toppings+'\n');
-            total += toppings;
-        }
-        if(isTakeawayAdded) {
+        if(isTakeawayAdded)
             str.append("Paperbag Added: "+20+'\n');
-            total += 20;
-        }
-        str.append("Total Price: "+total);
+
+        str.append("Total Price: "+price+'\n');
 
         bill = str.toString();
         return this.bill;
